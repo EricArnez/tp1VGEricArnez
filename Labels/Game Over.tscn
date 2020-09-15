@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Labels/Game Over.gd" type="Script" id=2]
+[ext_resource path="res://Labels/Try Again.gd" type="Script" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+[node name="Game Over" type="CanvasLayer"]
+follow_viewport_enable = true
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -36.3641
+margin_top = -65.3641
+margin_right = 148.636
+margin_bottom = -26.3641
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Try Again" type="Button" parent="Control"]
+margin_left = -100.545
+margin_top = 14.1613
+margin_right = 122.455
+margin_bottom = 81.1613
+text = "Try Again!"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+[connection signal="pressed" from="Control/Try Again" to="." method="_on_Try_Again_pressed"]
+[connection signal="timeout" from="Timer" to="Control/Try Again" method="_on_Timer_timeout"]

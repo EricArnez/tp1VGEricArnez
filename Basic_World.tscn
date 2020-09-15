@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Basic_World.gd" type="Script" id=3]
+[ext_resource path="res://Labels/UI.tscn" type="PackedScene" id=4]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -326.63, -142.837 )
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[node name="RhombusTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+[connection signal="timeout" from="RhombusTimer" to="." method="_on_RhombusTimer_timeout"]
